@@ -1,0 +1,31 @@
+{
+	"source":"C:/tools/test",
+	"userName":"Wes",
+	"outPath":"C:/tools/test/out",
+	"debug": false,
+	"taget":[
+		{
+			"name":"taxi",
+			"type":"pdf",
+			"outPath":"{{outPath}}/taxi",
+			"outFileName":"{{orderDate|datetimeformat('MMDD')}}-{{userName}}-{{money}}-{{fileName}}",
+			"outExcel":[
+				{ "title":"userName" },
+				{ "title":"orderDate","numformat":"mm-dd-yy","type":"date"},
+				{ "title":"money","numformat":"[$¥-804]#,##0.00","type":"float" }
+			]
+		},
+		{
+			"name":"bill",
+			"disable":false,
+			"type":"imgae",
+			"outPath":"{{outPath}}/餐票",
+			"outFileName":"{{orderDate|datetimeformat('MMDD')}}-{{userName}}-{{money}}",
+			"outExcel":[
+				{ "title":"userName" },
+				{ "title":"orderDate","numformat":"mm-dd-yy","type":"date"},
+				{ "title":"money","numformat":"[$¥-804]#,##0.00","type":"float" }
+			]
+		}
+	]
+}
