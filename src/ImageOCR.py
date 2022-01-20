@@ -51,6 +51,7 @@ class ImageOCR:
 
                 text = self.driver.find_element(By.CSS_SELECTOR,'.textbox .textItem').get_attribute('value')
                 self.driver.find_element(By.XPATH,'//div[@class="BtnBound"]/i[contains(text(),"delete_outline")]').click()
+                logging.warning('识别内容：'+text)
                 res.append(text)
             except TimeoutException:
                 logging.error('识别超时:'+pic)
