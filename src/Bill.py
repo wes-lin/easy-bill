@@ -10,7 +10,8 @@ class Bill:
     def matchs(self):
         return [r'下单时间(?P<orderDate>[0-9]{4}-[0-9]{1,2}-[0-9]{1,2})',
                 r'总计(?P<money>[0-9]+.[0-9]+)',
-                r'合计(?P<money>[0-9]+.[0-9]+)']
+                r'合计(?P<money>[0-9]+.[0-9]+)',
+                r'实付款(?P<money>[0-9]+.[0-9]+)']
 
     def extract(self):
         for match in self.matchs():

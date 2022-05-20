@@ -1,13 +1,12 @@
 import winreg
 import urllib.request
 import zipfile
-import re
+import json
 import sys
 import os
 import subprocess
 
-URL = 'https://npm.taobao.org/mirrors/chromedriver'
-VERSION = r'<a href="(?P<href>.*?)">(?P<version>\d.*?)/</a>'
+URL = 'https://registry.npmmirror.com/-/binary/chromedriver/'
 DRIVER_PATH = r'..\drivers'
 
 def getChromeVersion():
@@ -18,14 +17,14 @@ def getChromeVersion():
 def getChromeDownloadURL(version='1.0'):
     _version = version[:version.rfind('.')]
     rep = urllib.request.urlopen(URL).read().decode('utf-8')
-    result = re.finditer(VERSION,rep)
+    result = json.loads(rep)
     versions = []
     for item in result:
-        if item.group('version').find(_version)!=-1:
-            versions.append(item.group('version'))
+        if item['name'].find(_version)!=-1:
+            versions.append(item['name'])
     if len(versions)>0:
         return {
-            'url':'/'.join([URL,versions[-1],'chromedriver_win32.zip']),
+            'url':result[0]['url']+'chromedriver_win32.zip',
             'version':versions[-1]
             }
     return None
