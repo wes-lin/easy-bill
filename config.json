@@ -3,7 +3,7 @@
 	"userName":"Wes",
 	"outPath":"C:/tools/test/out",
 	"debug": false,
-	"taget":[
+	"target":[
 		{
 			"name":"taxi",
 			"type":"pdf",

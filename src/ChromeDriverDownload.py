@@ -20,12 +20,13 @@ def getChromeDownloadURL(version='1.0'):
     result = json.loads(rep)
     versions = []
     for item in result:
+        if item['type'] == 'file': continue
         if item['name'].find(_version)!=-1:
-            versions.append(item['name'])
+            versions.append(item)
     if len(versions)>0:
         return {
-            'url':result[0]['url']+'chromedriver_win32.zip',
-            'version':versions[-1]
+            'url':versions[-1]['url']+'chromedriver_win32.zip',
+            'version':versions[-1]['name']
             }
     return None
 
@@ -71,5 +72,6 @@ def update():
     chrome_v = getChromeVersion()
     local_v = getLocalChromeDriverVersion()
     last_v = getChromeDownloadURL(chrome_v)
+    print(r'local version: {} last version: {}'.format(local_v,last_v['version']))
     if local_v == None or last_v['version']!=local_v:
         downloadChromeDriver(last_v['url'])

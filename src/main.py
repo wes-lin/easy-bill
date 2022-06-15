@@ -64,9 +64,9 @@ def outExcel(config,array):
 if __name__=='__main__':
     config = load_config('../config.json')
     outExcelData = []
-    for taget in config['taget']:
-        type = taget['type']
-        if 'disable' in taget and taget['disable']:
+    for target in config['target']:
+        type = target['type']
+        if 'disable' in target and target['disable']:
             continue
         bills = []
         if type == 'pdf':
@@ -88,7 +88,7 @@ if __name__=='__main__':
                         bill['orderDate'] = didiTravel[key]
                     else:
                         bill['orderDate'] = bill['applyDate']
-                process(bill,config,taget)
+                process(bill,config,target)
         if type =='imgae':
             ChromeDriverDownload.update()
             paths = glob.glob(config['source']+'/*[.jpg, .png]')
@@ -100,12 +100,12 @@ if __name__=='__main__':
                 bill.extract()
                 data = bill.getData()
                 bills.append(data)
-                process(data,config,taget)
+                process(data,config,target)
         
         outExcelData.append({
-                'name':taget['name'],
+                'name':target['name'],
                 'data':bills,
-                'outExcel':taget['outExcel']
+                'outExcel':target['outExcel']
             })
 
     outExcel(config,outExcelData)

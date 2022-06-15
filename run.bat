@@ -8,3 +8,4 @@ if exist %ENV% (
    call %ENV% 
 )
 py main.py
+pause

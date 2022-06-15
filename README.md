@@ -39,10 +39,10 @@
 |`orderDate`|文件中识别出的订单日期|string|
 |`money`|文件中识别出的订单金额|string|
 |`fileName`|源文件名|string|
-|`taget`|目标任务|array|
-|`taget.name`|任务名|string|
-|`taget.disable`|是否开启该任务|boolean|
-|`taget.type`|任务类型 pdf,imgae|string|
-|`taget.outPath`|任务输出路径|string|
-|`taget.outFileName`|任务输出文件名格式|string|
-|`taget.outExcel`|任务输出outExcel的字段|array|
+|`target`|目标任务|array|
+|`target.name`|任务名|string|
+|`target.disable`|是否开启该任务|boolean|
+|`target.type`|任务类型 pdf,imgae|string|
+|`target.outPath`|任务输出路径|string|
+|`target.outFileName`|任务输出文件名格式|string|
+|`target.outExcel`|任务输出outExcel的字段|array|
