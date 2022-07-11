@@ -26,7 +26,7 @@ def getChromeDownloadURL(version='1.0'):
     if len(versions)>0:
         return {
             'url':versions[-1]['url']+'chromedriver_win32.zip',
-            'version':versions[-1]['name']
+            'version':versions[-1]['name'].strip('/')
             }
     return None
 
